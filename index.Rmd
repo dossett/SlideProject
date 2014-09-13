@@ -1,5 +1,5 @@
 ---
-title       : An App to Understand Arrest Rates and Urbanicity
+title       : Understanding Arrest Rates and Urbanicity
 subtitle    : a data product
 author      : https://github.com/dossett/
 job         : 
