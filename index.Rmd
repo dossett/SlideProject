@@ -1,7 +1,7 @@
 ---
-title       : Aaron's Title
-subtitle    : aaron's subtitle
-author      : dossett
+title       : An App to Understand Arrest Rates and Urbanicity
+subtitle    : a data product
+author      : https://github.com/dossett/
 job         : 
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
@@ -11,16 +11,45 @@ mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
 
-## Slide 2
+## Arrest Rates and Urbanicity
+
+This new data product will help you understand the relationship between arrest rates and urban population across states.
+
+You can see this data product for yourself at:
+
+https://dossett.shinyapps.io/ShinyProject/
 
 --- .class #id 
 
-## Slide 3
+## What you will learn
+
+For three different types of arrests you will:
+
+* Visually see the relationship between urbanicity and arrest rates
+* Learn the r-squared value of this relationship -- in other words, how much of the variance in arrest rates is explained by variance in urbanicty?
+* Learn the slope of the regression line -- you can estimate what change in arrest rates would result from a change in urbanicity
+<hr>
+* Be able to quick and easily switch between different data sets to draw conclusions about what arrests have the strongest and weakest relationships with urbanicity
 
 --- .class #id 
 
-## Slide 4
+## Visualization is Better Than Text
+```{r}
+library(datasets)
+
+x <- USArrests$UrbanPop
+y <- USArrests$Assault
+reg <- lm(y~x)
+
+summary(reg)$r.squared
+summary(reg)$coefficients["x", "Estimate"]
+```
 
 --- .class #id 
 
-## Slide 5
+## This Data Product was created with:
+
+* R Studio
+* shiny
+* shinyapps and the shinyapps.io hosting service
+* The teachings of the Developing Data Products Coursera class

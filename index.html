@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Aaron's Title</title>
+  <title>An App to Understand Arrest Rates and Urbanicity</title>
   <meta charset="utf-8">
-  <meta name="description" content="Aaron's Title">
-  <meta name="author" content="dossett">
+  <meta name="description" content="An App to Understand Arrest Rates and Urbanicity">
+  <meta name="author" content="https://github.com/dossett/">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
     media="only screen and (max-device-width: 480px)" >
   <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
-  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <link rel="stylesheet" href="libraries/highlighters/prettify/css/tomorrow.css" />
   <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
 
   
@@ -32,9 +32,9 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>Aaron's Title</h1>
-    <h2>aaron's subtitle</h2>
-    <p>dossett<br/></p>
+    <h1>An App to Understand Arrest Rates and Urbanicity</h1>
+    <h2>a data product</h2>
+    <p>https://github.com/dossett/<br/></p>
   </hgroup>
   <article></article>  
 </slide>
@@ -43,40 +43,77 @@
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h2>Slide 2</h2>
+    <h2>Arrest Rates and Urbanicity</h2>
   </hgroup>
   <article data-timings="">
-    
+    <p>This new data product will help you understand the relationship between arrest rates and urban population across states.</p>
+
+<p>You can see this data product for yourself at:</p>
+
+<p><a href="https://dossett.shinyapps.io/ShinyProject/">https://dossett.shinyapps.io/ShinyProject/</a></p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Slide 3</h2>
+    <h2>What you will learn</h2>
   </hgroup>
   <article data-timings="">
-    
+    <p>For three different types of arrests you will:</p>
+
+<ul>
+<li>Visually see the relationship between urbanicity and arrest rates</li>
+<li>Learn the r-squared value of this relationship -- in other words, how much of the variance in arrest rates is explained by variance in urbanicty?</li>
+<li>Learn the slope of the regression line -- you can estimate what change in arrest rates would result from a change in urbanicity
+<hr></li>
+<li>Be able to quick and easily switch between different data sets to draw conclusions about what arrests have the strongest and weakest relationships with urbanicity</li>
+</ul>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Slide 4</h2>
+    <h2>Visualization is Better Than Text</h2>
   </hgroup>
   <article data-timings="">
-    
+    <pre><code class="r">library(datasets)
+
+x &lt;- USArrests$UrbanPop
+y &lt;- USArrests$Assault
+reg &lt;- lm(y~x)
+
+summary(reg)$r.squared
+</code></pre>
+
+<pre><code>## [1] 0.06701
+</code></pre>
+
+<pre><code class="r">summary(reg)$coefficients[&quot;x&quot;, &quot;Estimate&quot;]
+</code></pre>
+
+<pre><code>## [1] 1.49
+</code></pre>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Slide 5</h2>
+    <h2>This Data Product was created with:</h2>
   </hgroup>
   <article data-timings="">
-    
+    <ul>
+<li>R Studio</li>
+<li>shiny</li>
+<li>shinyapps and the shinyapps.io hosting service</li>
+<li>The teachings of the Developing Data Products Coursera class</li>
+</ul>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -87,25 +124,25 @@
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Slide 2'>
+        data-slide=1 title='Arrest Rates and Urbanicity'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Slide 3'>
+        data-slide=2 title='What you will learn'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Slide 4'>
+        data-slide=3 title='Visualization is Better Than Text'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Slide 5'>
+        data-slide=4 title='This Data Product was created with:'>
          4
       </a>
     </li>
@@ -119,9 +156,15 @@
 </body>
   <!-- Load Javascripts for Widgets -->
   
-  <!-- LOAD HIGHLIGHTER JS FILES -->
-  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
-   
+  <!-- Google Prettify -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/188.0.0/prettify.js"></script>
+  <script src='libraries/highlighters/prettify/js/lang-r.js'></script>
+  <script>
+    var pres = document.getElementsByTagName("pre");
+    for (var i=0; i < pres.length; ++i) {
+      pres[i].className = "prettyprint linenums";
+    }
+    prettyPrint();
+  </script>
+  <!-- End Google Prettify --> 
   </html>
